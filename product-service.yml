@@ -9,7 +9,7 @@ resilience4j:
         registerHealthIndicator: true
         slidingWindowSize: 5
         failureRateThreshold: 50
-        waitDurationInOpenState: 10s
+        waitDurationInOpenState: 5s
         permittedNumberOfCallsInHalfOpenState: 2
         minimumNumberOfCalls: 5
         automaticTransitionFromOpenToHalfOpenEnabled: true
@@ -17,7 +17,7 @@ resilience4j:
     instances:
       productServiceRetry:
         maxAttempts: 3 
-        waitDuration: 200ms
+        waitDuration: 1s
         
 server:
   port: 9090
