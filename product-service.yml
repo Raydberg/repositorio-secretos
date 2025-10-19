@@ -16,6 +16,23 @@ spring:
         format_sql: true
         use_sql_comments: true
 
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      productServiceCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 2
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  retry:
+    instances:
+      productServiceRetry:
+        maxAttempts: 3 
+        waitDuration: 1s
         
 server:
   port: 9090
